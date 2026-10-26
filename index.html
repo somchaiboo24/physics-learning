@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Physics Learning Lab ห้องเรียนฟิสิกส์ออนไลน์ เรื่องคลื่นกล">
+<title>Physics Learning Lab | คลื่นกล</title>
+<style>
+:root{--navy:#102c46;--blue:#1976b9;--sky:#eaf5fc;--ink:#1e293b;--muted:#64748b;--line:#dbe4ec;--paper:#fff;--bg:#f4f7fa;--green:#147d64;--orange:#b85c12}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.65}
+a{color:var(--blue)}button,input{font:inherit}button{cursor:pointer}
+header{background:var(--navy);color:#fff;padding:18px max(20px,calc((100% - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.3px}.brand small{display:block;font-size:.78rem;color:#c8e6fb;font-weight:500}
+nav{display:flex;gap:8px;flex-wrap:wrap}nav a{color:#fff;text-decoration:none;padding:7px 10px;border-radius:8px;font-size:.94rem}nav a:hover,nav a:focus{background:#244762}
+main{max-width:1120px;margin:24px auto;padding:0 18px}
+.hero{background:linear-gradient(120deg,#102c46,#1d5b83);color:#fff;padding:clamp(24px,5vw,48px);border-radius:20px;display:grid;grid-template-columns:1.4fr .8fr;gap:24px;align-items:center}
+.eyebrow{color:#a8ddff;font-weight:700;font-size:.85rem;letter-spacing:1px}.hero h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.2;margin:8px 0 14px}.hero p{color:#e3eef7;max-width:650px}.hero-art{border:1px solid #5d8aa9;background:#143c5a;border-radius:16px;padding:14px}
+.pill{display:inline-block;border:1px solid #7da9c8;border-radius:999px;padding:4px 10px;font-size:.85rem;margin:4px 4px 0 0}
+.section{margin:30px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap}.section h2{margin:0 0 5px;font-size:1.65rem}.muted{color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 4px 14px #163b5508}.card h3{margin:8px 0}.card p{color:var(--muted);margin-top:6px}.icon{width:44px;height:44px;border-radius:12px;background:var(--sky);display:grid;place-items:center;color:var(--blue);font-size:1.4rem;font-weight:800}
+.layout{display:grid;grid-template-columns: minmax(0,1.2fr) minmax(280px,.8fr);gap:18px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0}.panel h3{margin-top:0}
+label{display:block;font-weight:650;margin:12px 0 5px}input[type=range]{width:100%;accent-color:var(--blue)}input[type=radio]{accent-color:var(--blue)}
+.btn{border:0;background:var(--blue);color:#fff;padding:10px 15px;border-radius:10px;font-weight:700}.btn:hover{filter:brightness(.92)}.btn.secondary{background:#e8f2f9;color:#174c70}.btn.dark{background:var(--navy)}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+canvas{display:block;width:100%;height:auto;background:#f7fbfe;border:1px solid var(--line);border-radius:12px}
+.note{background:#fff7e8;border-left:4px solid #e2a34b;padding:12px 14px;border-radius:8px}.formula{font-size:1.35rem;text-align:center;background:#eff7fc;padding:15px;border-radius:12px;font-weight:800;color:#174c70}
+.quiz-q{padding:14px 0;border-bottom:1px solid var(--line)}.quiz-q:last-child{border-bottom:0}.quiz-q p{font-weight:700;margin:0 0 8px}.option{display:block;font-weight:400;margin:7px 0;padding:7px 10px;border-radius:8px;background:#f8fafc}
+.feedback{margin-top:12px;padding:12px;border-radius:10px;display:none}.feedback.show{display:block}.feedback.good{background:#e7f7f1;color:#145c49}.feedback.bad{background:#fff1e8;color:#8c3b10}
+footer{margin-top:36px;background:#e7eef4;padding:24px;text-align:center;color:#475569}
+.small{font-size:.9rem}.tag{font-size:.8rem;background:#e6f4ff;color:#17547b;padding:4px 8px;border-radius:7px;display:inline-block}
+progress{width:100%;height:12px;accent-color:var(--green)}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.cards{grid-template-columns:1fr}.layout{grid-template-columns:1fr}header{align-items:flex-start}nav{width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">PHYSICS LEARNING LAB<small>ห้องเรียนฟิสิกส์ออนไลน์</small></div>
+  <nav aria-label="เมนูหลัก">
+    <a href="#home">หน้าแรก</a><a href="#lessons">บทเรียน</a><a href="#lab">ห้องทดลอง</a><a href="#quiz">แบบทดสอบ</a>
+  </nav>
+</header>
+<main>
+<section class="hero" id="home">
+  <div>
+    <div class="eyebrow">PHYSICS • EXPLORE • EXPLAIN</div>
+    <h1>คลื่นกล<br>เรียนรู้ผ่านการทดลอง</h1>
+    <p>สำรวจว่าคลื่นถ่ายทอดพลังงานอย่างไร อนุภาคของตัวกลางเคลื่อนที่แบบใด และความถี่สัมพันธ์กับความยาวคลื่นอย่างไร</p>
+    <a class="btn" href="#lab" style="display:inline-block;text-decoration:none">เริ่มทดลองเลย ↓</a>
+    <div style="margin-top:15px"><span class="pill">ระดับมัธยมปลาย</span><span class="pill">เวลา 30–45 นาที</span><span class="pill">ทดลองได้บนมือถือ</span></div>
+  </div>
+  <div class="hero-art">
+    <canvas id="heroWave" width="480" height="190" aria-label="ภาพคลื่นไซน์"></canvas>
+    <p class="small" style="color:#d8e9f5;margin-bottom:0">ตั้งคำถาม → ทดลอง → บันทึกผล → อธิบายด้วยหลักฐาน</p>
+  </div>
+</section>
+
+<section class="section" id="lessons">
+  <div class="section-head"><div><h2>เส้นทางการเรียนรู้</h2><p class="muted">เรียนตามลำดับ หรือเลือกทำกิจกรรมที่ต้องการ</p></div><span class="tag">ต้นแบบรุ่น 1</span></div>
+  <div class="cards">
+    <article class="card"><div class="icon">01</div><h3>ทำความเข้าใจคลื่น</h3><p>แยกความหมายของคลื่น การถ่ายทอดพลังงาน และการสั่นของอนุภาคตัวกลาง</p><a href="#concept">อ่านแนวคิดสำคัญ →</a></article>
+    <article class="card"><div class="icon">02</div><h3>ห้องทดลองเสมือน</h3><p>ปรับความถี่และแอมพลิจูด สังเกตรูปร่างคลื่นและวัดความยาวคลื่น</p><a href="#lab">ไปห้องทดลอง →</a></article>
+    <article class="card"><div class="icon">03</div><h3>ตรวจสอบความเข้าใจ</h3><p>ตอบคำถามพร้อมเหตุผล แล้วอ่านผลย้อนกลับเพื่อทบทวนแนวคิด</p><a href="#quiz">ทำแบบทดสอบ →</a></article>
+  </div>
+</section>
+
+<section class="section layout" id="concept">
+  <div class="panel">
+    <h2>แนวคิดสำคัญ</h2>
+    <p>คลื่นกลเป็นการรบกวนที่เคลื่อนที่ผ่านตัวกลาง โดยมีการถ่ายทอดพลังงาน อนุภาคของตัวกลางสั่นรอบตำแหน่งสมดุล ไม่ได้เคลื่อนที่ตามคลื่นไปทั้งหมด</p>
+    <div class="formula">v = fλ</div>
+    <ul>
+      <li><b>v</b> คือ อัตราเร็วคลื่น หน่วยเมตรต่อวินาที (m/s)</li>
+      <li><b>f</b> คือ ความถี่ หน่วยเฮิรตซ์ (Hz)</li>
+      <li><b>λ</b> คือ ความยาวคลื่น หน่วยเมตร (m)</li>
+    </ul>
+    <div class="note"><b>ชวนคิด:</b> ถ้าคลื่นเคลื่อนที่ในตัวกลางเดิมและอัตราเร็วคงที่ เมื่อเพิ่มความถี่ ความยาวคลื่นจะเปลี่ยนอย่างไร? ทดลองในห้องทดลองด้านล่างก่อนตอบ</div>
+  </div>
+  <div class="panel">
+    <h3>เป้าหมายการเรียนรู้</h3>
+    <ul>
+      <li>อธิบายการถ่ายทอดพลังงานของคลื่นกลได้</li>
+      <li>แยกการเคลื่อนที่ของคลื่นออกจากการสั่นของอนุภาคได้</li>
+      <li>ใช้ความสัมพันธ์ระหว่างอัตราเร็ว ความถี่ และความยาวคลื่นได้</li>
+      <li>ใช้ผลจากการทดลองสนับสนุนคำอธิบายของตนเองได้</li>
+    </ul>
+    <p class="muted small">ข้อเสนอแนะสำหรับครู: ให้ผู้เรียนเขียนคำทำนายก่อนปรับตัวแปร และบันทึกหลักฐานหลังทดลอง</p>
+  </div>
+</section>
+
+<section class="section" id="lab">
+  <div class="section-head"><div><h2>ห้องทดลองเสมือน: คลื่นบนเส้นเชือก</h2><p class="muted">ปรับค่าและสังเกตว่ารูปคลื่นเปลี่ยนไปอย่างไร</p></div></div>
+  <div class="layout">
+    <div class="panel">
+      <canvas id="waveCanvas" width="800" height="300" aria-label="การจำลองคลื่นตามขวาง"></canvas>
+      <div class="btnrow"><button class="btn" id="toggleBtn">หยุดภาพเคลื่อนไหว</button><button class="btn secondary" id="resetBtn">คืนค่าเริ่มต้น</button></div>
+      <p class="muted small">แบบจำลองนี้ใช้แสดงคลื่นไซน์อย่างง่าย ไม่ใช่การจำลองการทดลองในห้องปฏิบัติการที่คำนึงถึงทุกปัจจัย</p>
+    </div>
+    <div class="panel">
+      <h3>แผงควบคุม</h3>
+      <label for="freq">ความถี่: <output id="freqOut">2.0</output> Hz</label>
+      <input id="freq" type="range" min="0.5" max="5" step="0.5" value="2">
+      <label for="amp">แอมพลิจูด: <output id="ampOut">40</output> หน่วยจำลอง</label>
+      <input id="amp" type="range" min="10" max="70" step="5" value="40">
+      <label for="speed">อัตราเร็วคลื่น: <output id="speedOut">2.0</output> m/s</label>
+      <input id="speed" type="range" min="1" max="5" step="0.5" value="2">
+      <div class="formula" style="margin-top:18px">λ = v / f</div>
+      <p>ความยาวคลื่นโดยคำนวณ: <b><span id="lambdaOut">1.00</span> m</b></p>
+      <p>คาบการสั่น: <b><span id="periodOut">0.50</span> s</b></p>
+      <div class="note small">ทดลองทีละตัวแปร: คงอัตราเร็วไว้แล้วเพิ่มความถี่ จากนั้นสังเกตความยาวคลื่น</div>
+    </div>
+  </div>
+</section>
+
+<section class="section layout">
+  <div class="panel">
+    <h2>บันทึกผลการทดลอง</h2>
+    <p>ปรับค่าด้านบน แล้วกดปุ่มเพื่อเพิ่มผลลงในตารางของคุณ</p>
+    <button class="btn" id="recordBtn">บันทึกค่าปัจจุบัน</button>
+    <div style="overflow-x:auto;margin-top:14px">
+      <table style="border-collapse:collapse;width:100%;min-width:440px" id="dataTable">
+        <thead><tr style="background:#edf5fa"><th style="padding:9px;border:1px solid #dbe4ec">ครั้ง</th><th style="padding:9px;border:1px solid #dbe4ec">f (Hz)</th><th style="padding:9px;border:1px solid #dbe4ec">v (m/s)</th><th style="padding:9px;border:1px solid #dbe4ec">λ (m)</th></tr></thead>
+        <tbody id="dataRows"><tr><td colspan="4" style="padding:10px;text-align:center;color:#64748b;border:1px solid #dbe4ec">ยังไม่มีข้อมูล — ทดลองแล้วบันทึกค่า</td></tr></tbody>
+      </table>
+    </div>
+    <div class="btnrow"><button class="btn secondary" id="downloadBtn">ดาวน์โหลดข้อมูล CSV</button><button class="btn secondary" id="clearBtn">ล้างตาราง</button></div>
+  </div>
+  <div class="panel">
+    <h3>คำถามสืบเสาะ</h3>
+    <ol>
+      <li>เมื่อเพิ่มความถี่โดยคงอัตราเร็วไว้ ความยาวคลื่นเปลี่ยนอย่างไร?</li>
+      <li>แอมพลิจูดที่เพิ่มขึ้นทำให้ความยาวคลื่นเปลี่ยนหรือไม่ในแบบจำลองนี้?</li>
+      <li>หลักฐานจากตารางสนับสนุนสมการ v = fλ อย่างไร?</li>
+    </ol>
+    <label for="reflection">เขียนข้อสรุปของคุณ</label>
+    <textarea id="reflection" rows="5" style="width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:9px" placeholder="ฉันสังเกตว่า... หลักฐานคือ... จึงสรุปได้ว่า..."></textarea>
+    <p class="muted small">คำตอบนี้อยู่ในเบราว์เซอร์ของเครื่องที่ใช้อยู่ และจะไม่ถูกส่งให้ครูโดยอัตโนมัติ</p>
+  </div>
+</section>
+
+<section class="section" id="quiz">
+  <div class="section-head"><div><h2>แบบทดสอบตรวจสอบความเข้าใจ</h2><p class="muted">เลือกคำตอบที่ดีที่สุด แล้วตรวจผลเพื่ออ่านคำอธิบาย</p></div></div>
+  <div class="panel">
+    <form id="quizForm">
+      <div class="quiz-q"><p>1. คลื่นกลถ่ายทอดสิ่งใดจากตำแหน่งหนึ่งไปยังอีกตำแหน่งหนึ่ง?</p>
+        <label class="option"><input type="radio" name="q1" value="a"> สสารทั้งหมดของตัวกลาง</label>
+        <label class="option"><input type="radio" name="q1" value="b"> พลังงานผ่านตัวกลาง</label>
+        <label class="option"><input type="radio" name="q1" value="c"> อนุภาคทุกอนุภาคเดินทางไปกับคลื่น</label>
+        <div class="feedback" id="fb1"></div>
+      </div>
+      <div class="quiz-q"><p>2. ในตัวกลางเดิม ถ้าอัตราเร็วคลื่นคงที่และเพิ่มความถี่เป็น 2 เท่า ความยาวคลื่นจะเป็นอย่างไร?</p>
+        <label class="option"><input type="radio" name="q2" value="a"> เพิ่มเป็น 2 เท่า</label>
+        <label class="option"><input type="radio" name="q2" value="b"> คงเดิม</label>
+        <label class="option"><input type="radio" name="q2" value="c"> ลดเหลือครึ่งหนึ่ง</label>
+        <div class="feedback" id="fb2"></div>
+      </div>
+      <div class="quiz-q"><p>3. คลื่นมีความถี่ 4 Hz และความยาวคลื่น 1.5 m อัตราเร็วคลื่นเท่าใด?</p>
+        <label class="option"><input type="radio" name="q3" value="a"> 2.67 m/s</label>
+        <label class="option"><input type="radio" name="q3" value="b"> 6 m/s</label>
+        <label class="option"><input type="radio" name="q3" value="c"> 5.5 m/s</label>
+        <div class="feedback" id="fb3"></div>
+      </div>
+      <button class="btn" type="submit">ตรวจคำตอบ</button>
+      <button class="btn secondary" type="button" id="retryBtn">ทำใหม่</button>
+    </form>
+    <div id="scoreBox" class="feedback" aria-live="polite"></div>
+  </div>
+</section>
+<section class="section">
+  <div class="panel">
+    <h2>สำหรับครูผู้สอน</h2>
+    <p>ใช้เว็บไซต์นี้เป็นต้นแบบเพื่อทดลองกับนักเรียนกลุ่มเล็กก่อนใช้งานจริง ครูสามารถปรับเนื้อหา คำถาม และค่าการจำลองให้ตรงกับหลักสูตรและระดับชั้น</p>
+    <p class="muted small">เวอร์ชันต้นแบบ 1.0 • สร้างด้วย HTML, CSS และ JavaScript • คะแนนและบันทึกกิจกรรมยังไม่ถูกจัดเก็บในฐานข้อมูลกลาง</p>
+  </div>
+</section>
+</main>
+<footer>
+  <b>Physics Learning Lab</b><br>บทเรียนต้นแบบเพื่อการเรียนรู้ฟิสิกส์ผ่านการสำรวจ<br><span class="small">แก้ไขชื่อโรงเรียน ชื่อผู้สอน และเนื้อหาได้ในไฟล์ index.html</span>
+</footer>
+<script>
+const waveCanvas=document.getElementById('waveCanvas'), ctx=waveCanvas.getContext('2d');
+const hero=document.getElementById('heroWave'), hctx=hero.getContext('2d');
+const freq=document.getElementById('freq'), amp=document.getElementById('amp'), speed=document.getElementById('speed');
+let running=true, t=0, rows=[];
+function values(){const f=+freq.value,a=+amp.value,v=+speed.value;return {f,a,v,lambda:v/f,period:1/f}}
+function updateLabels(){const x=values();document.getElementById('freqOut').textContent=x.f.toFixed(1);document.getElementById('ampOut').textContent=x.a;document.getElementById('speedOut').textContent=x.v.toFixed(1);document.getElementById('lambdaOut').textContent=x.lambda.toFixed(2);document.getElementById('periodOut').textContent=x.period.toFixed(2)}
+function drawWave(c,canvas,amplitude,cycles,phase,color,grid=true){
+ const w=canvas.width,h=canvas.height;c.clearRect(0,0,w,h);
+ if(grid){c.strokeStyle='#e3edf4';c.lineWidth=1;for(let x=0;x<w;x+=40){c.beginPath();c.moveTo(x,0);c.lineTo(x,h);c.stroke()}for(let y=0;y<h;y+=30){c.beginPath();c.moveTo(0,y);c.lineTo(w,y);c.stroke()}}
+ c.strokeStyle='#1976b9';c.lineWidth=3;c.beginPath();
+ for(let x=0;x<=w;x++){const y=h/2-amplitude*Math.sin((x/w)*Math.PI*2*cycles-phase);if(x===0)c.moveTo(x,y);else c.lineTo(x,y)}c.stroke();
+ c.strokeStyle='#7896ab';c.setLineDash([6,5]);c.beginPath();c.moveTo(0,h/2);c.lineTo(w,h/2);c.stroke();c.setLineDash([]);
+}
+function animate(){const x=values();drawWave(ctx,waveCanvas,x.a,(waveCanvas.width/200)*(x.f/2),t,'#1976b9');drawWave(hctx,hero,40,2,t,'#9dd9ff',false);t+=running?0.045:0;requestAnimationFrame(animate)}
+[freq,amp,speed].forEach(el=>el.addEventListener('input',updateLabels));
+document.getElementById('toggleBtn').addEventListener('click',e=>{running=!running;e.target.textContent=running?'หยุดภาพเคลื่อนไหว':'เล่นภาพเคลื่อนไหว'});
+document.getElementById('resetBtn').addEventListener('click',()=>{freq.value=2;amp.value=40;speed.value=2;running=true;document.getElementById('toggleBtn').textContent='หยุดภาพเคลื่อนไหว';updateLabels()});
+function renderRows(){const body=document.getElementById('dataRows');if(!rows.length){body.innerHTML='<tr><td colspan="4" style="padding:10px;text-align:center;color:#64748b;border:1px solid #dbe4ec">ยังไม่มีข้อมูล — ทดลองแล้วบันทึกค่า</td></tr>';return}body.innerHTML=rows.map((r,i)=>`<tr>${[i+1,r.f.toFixed(1),r.v.toFixed(1),r.lambda.toFixed(2)].map(v=>`<td style="padding:9px;border:1px solid #dbe4ec;text-align:center">${v}</td>`).join('')}</tr>`).join('')}
+document.getElementById('recordBtn').addEventListener('click',()=>{rows.push(values());renderRows()});
+document.getElementById('clearBtn').addEventListener('click',()=>{rows=[];renderRows()});
+document.getElementById('downloadBtn').addEventListener('click',()=>{if(!rows.length){alert('กรุณาบันทึกข้อมูลอย่างน้อย 1 แถวก่อน');return}const csv='ครั้ง,ความถี่_Hz,อัตราเร็ว_m_s,ความยาวคลื่น_m\n'+rows.map((r,i)=>`${i+1},${r.f},${r.v},${r.lambda.toFixed(3)}`).join('\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='physics-wave-data.csv';a.click();URL.revokeObjectURL(url)});
+const answers={q1:{correct:'b',text:'คลื่นถ่ายทอดพลังงานผ่านตัวกลาง อนุภาคของตัวกลางสั่นรอบตำแหน่งสมดุล ไม่ได้เดินทางไปกับคลื่นทั้งหมด'},q2:{correct:'c',text:'จาก v = fλ เมื่อ v คงที่ ความถี่เพิ่มเป็น 2 เท่า ความยาวคลื่นจึงลดเหลือครึ่งหนึ่ง'},q3:{correct:'b',text:'ใช้ v = fλ = 4 × 1.5 = 6 m/s'}};
+document.getElementById('quizForm').addEventListener('submit',e=>{e.preventDefault();let score=0;for(const [q,data] of Object.entries(answers)){const selected=document.querySelector(`input[name="${q}"]:checked`);const fb=document.getElementById('fb'+q.slice(1));const ok=selected&&selected.value===data.correct;if(ok)score++;fb.className='feedback show '+(ok?'good':'bad');fb.textContent=(ok?'ถูกต้อง! ':'ลองทบทวนอีกครั้ง ') + data.text}const box=document.getElementById('scoreBox');box.className='feedback show '+(score===3?'good':'bad');box.innerHTML=`คุณได้ <b>${score}/3 คะแนน</b> — ${score===3?'ยอดเยี่ยม! ลองอธิบายเหตุผลของคำตอบด้วยภาษาของตนเอง':'ทบทวนคำอธิบายแต่ละข้อ แล้วลองทำใหม่อีกครั้ง'}`;box.scrollIntoView({behavior:'smooth',block:'nearest'})});
+document.getElementById('retryBtn').addEventListener('click',()=>{document.getElementById('quizForm').reset();document.querySelectorAll('.feedback').forEach(el=>{el.className='feedback';el.textContent=''});});
+updateLabels();renderRows();animate();
+</script>
+</body>
+</html>
